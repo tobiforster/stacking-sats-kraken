@@ -7,6 +7,7 @@ module.exports = async (kraken, validate, { getEnv }) => {
 
   // Get withdrawal information
   const { result: { limit, fee } } = await kraken.api('WithdrawInfo', withdrawdetails)
+  console.log(`ℹ  Withdrawal-Fee: ${parseFloat(fee)}BTC`)
   const relFee = 1/parseFloat(limit)*parseFloat(fee)
 
   console.log(`💡  Relative fee of withdrawal amount: ${(relFee*100).toFixed(2)}%`)
